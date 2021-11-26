@@ -1,8 +1,11 @@
 #this script reads in stock data and plots it
 #install.packages("ggplot2")
 #install.packages("plyr")
-library(plyr)
-library(ggplot2)
+#install.packages("jpeg")
+require(plyr)
+require(ggplot2)
+require(png)
+
 raw_data <- readLines("/home/michael/stock_project/stock_cache.txt")
 
 date_list <- list()
@@ -43,7 +46,10 @@ combined_data <- na.omit(combined_data)
 price_breaks <- seq(0, max(combined_data$price), round_any(accuracy = 10, x = (max(combined_data$price / 25))))
 #as.character(seq(0, max(combined_data$price), 10))
 
+
+png("/home/michael/stock_project/stock_plot.png", width = 12, height = 8, units = "in", res = 150)
 ggplot(combined_data, aes( x=date, y=price, group=stock, col=stock)) + 
   geom_line() + scale_x_date(name = 'Date', date_breaks = '5 years', date_labels = '%Y', limits = c(min(combined_data$date), max(combined_data$date))) +
   scale_y_continuous(name = "Closing Price", breaks=price_breaks, labels = price_breaks)
+dev.off()
   
