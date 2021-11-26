@@ -22,6 +22,8 @@ def main():
             while getting_stocks:
                 current_stock = input("Enter a stock symbol, or done to stop: ").lower()
                 if current_stock == "done":
+                    cache_file = open("/home/michael/stock_project/stock_cache.txt", "w")
+                    print("writing data...")
                     getting_stocks = False
                 elif True:
                     current_stock = current_stock.upper()
@@ -35,10 +37,10 @@ def main():
                 #data_set = output_dict[stock]
                 closing_prices = output_dict[stock]["Close"]
                 frame_string = closing_prices.to_string()
-                frame_string = stock + "55392898" + frame_string
-                output_string = output_string + frame_string + "\n"
-            cache_file = open("stock_cache.txt", "w")
-            cache_file.write(output_string)
+                frame_string = stock + "beginning_new_stock_here:" + frame_string
+                cache_file.write(frame_string + "\n")
+                #output_string = output_string + frame_string + "\n"
+            #cache_file.write(output_string)
             cache_file.close()
 #existence of 55392898 identifies the first line of new stock
 main()

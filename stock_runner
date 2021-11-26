@@ -1,5 +1,5 @@
 #!/bin/bash
 rm /home/michael/stock_project/stock_cache.txt
-python3 /home/michael/stock_project/user_interaction.py > stock_cache.txt
-R script /home/michael/stock_project/stock_plotter.R
-eog stock_plot.png
+python3 /home/michael/stock_project/user_interaction.py
+Rscript /home/michael/stock_project/stock_plotter.R
+eog /home/michael/stock_project/stock_plot.png
