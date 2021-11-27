@@ -58,7 +58,7 @@ combined_data <- data.frame(stock = stock_vec, date = date_vec, price = price_ve
 combined_data <- na.omit(combined_data)
 step <- round_any(accuracy = 10, x = (max(combined_data$price / 25)))
 if(step == 0){
-  step <- 1
+  step <- 5
 }
 price_breaks <- seq(0, max(combined_data$price), step)
 
